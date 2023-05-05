@@ -1,60 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    
-  </head>
-  <body>
-    <div class="webgl-wrapper">
-      <div class="aspect"></div>
-      <div class="webgl-content">
-        <div id="unityContainer">
-          <canvas id="unity-canvas" style="background: #231F20"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <div class="info">
-      <p><a href="#" onclick="myGameInstance.SetFullscreen(1)">Please click here</a> to toggle fullscreen</p>
-    </div>
-    
-   <script src="MyLoader.js"></script>
+    <title>%UNITY_WEB_NAME%</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.javascript"></script>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
     <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WebGl_MobileDevice.data.gz",
-        frameworkUrl: "Build/WebGl_MobileDevice.framework.js.gz",
-        codeUrl: "Build/WebGl_MobileDevice.wasm.gz",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Board Game",
-        productVersion: "0.1",
-      }).then((unityInstance) => {
-        myGameInstance = unityInstance;
-      });
+        var gameInstance = UnityLoader.instantiate("gameContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
     </script>
-
-
-<!-- THIS IS MY CUSTOM FUN -->
-
-<script>
-    
-      document.addEventListener('mousedown', function() {
-                  
-            console.log("This is my fullscreen Log");
-            console.log(myGameInstance);    
-            myGameInstance.SetFullscreen(1);
-
-             
-      });
-</script>
-
-
-  </body>
+</head>
+<body>
+<div class="webgl-content">
+    <div id="gameContainer" style="width: %UNITY_WIDTH%px; height: %UNITY_HEIGHT%px"></div>
+</div>
+<div class="simmer">template by: <a href="https://simmer.io" target="_blank">SIMMER.io</a></div>
+<script src="TemplateData/responsive.javascript"></script>
+</body>
 </html>
